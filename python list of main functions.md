@@ -391,6 +391,59 @@ area = circle.calculate_area()
 print(area)  # Output: 78.5
 ```
 
-40. return:
+40. `dict()`: Create an empty dictionary.
 ```python
-def multiply(a, b):
+my_dict = dict()
+print(my_dict)  # Output: {}
+```
+
+41. `clear()`: Remove all key-value pairs from a dictionary.
+```python
+my_dict = {'name': 'John', 'age': 25}
+my_dict.clear()
+print(my_dict)  # Output: {}
+```
+
+42. `get()`: Retrieve the value associated with a specific key from a dictionary.
+```python
+my_dict = {'name': 'John', 'age': 25}
+name = my_dict.get('name')
+print(name)  # Output: John
+```
+
+43. `items()`: Return a list of key-value pairs in a dictionary.
+```python
+my_dict = {'name': 'John', 'age': 25}
+items = my_dict.items()
+print(items)  # Output: [('name', 'John'), ('age', 25)]
+```
+
+44. `keys()`: Return a list of keys in a dictionary.
+```python
+my_dict = {'name': 'John', 'age': 25}
+keys = my_dict.keys()
+print(keys)  # Output: ['name', 'age']
+```
+
+45. `values()`: Return a list of values in a dictionary.
+```python
+my_dict = {'name': 'John', 'age': 25}
+values = my_dict.values()
+print(values)  # Output: ['John', 25]
+```
+
+46. `pop()`: Remove a key-value pair from a dictionary and return its value.
+```python
+my_dict = {'name': 'John', 'age': 25}
+age = my_dict.pop('age')
+print(age)  # Output: 25
+print(my_dict)  # Output: {'name': 'John'}
+```
+
+47. `update()`: Update a dictionary with the key-value pairs from another dictionary.
+```python
+my_dict = {'name': 'John'}
+new_data = {'age': 25, 'city': 'New York'}
+my_dict.update(new_data)
+print(my_dict)  # Output: {'name': 'John', 'age': 25, 'city': 'New York'}
+```
