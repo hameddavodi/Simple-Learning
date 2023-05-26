@@ -1,0 +1,657 @@
+For R:
+
+The entities that R creates and manipulates are known as objects:
+variables (scalar)
+vectors
+arrays
+lists
+data.frame
+environments
+functions
+packages
+etc.
+
+rm() > removes and object
+
+ls() > accesses the objects list in environment
+
+the order of math opers:
+ () * / + -
+ 
+ class()
+ type()
+ is.integer(x)
+ as.integer(x)
+ 
+ & and | or ! not
+ 
+ paste() > concatinate the strings in a row
+ x='flying'
+ paste("the birds",x,"high",sep='!!!!')
+ 'the birds!!!!flying!!!!high'
+ 
+ cat() > same as paste but without any seperation attribute
+ 
+ sprintf( "%s  %f", "we use %s for string ", "we use %f for ints")
+ 
+ sub(x,y,z) > substituting the x with y in object z
+ 
+ c(1,2,3,4,5)> is a vector
+ 
+ c('Tottenham' = 27, 'Aston Villa' = 25, 'Leicester' = 23) > we can specify name    for each elemets in R vector
+ 
+ other way of doing so:
+ 
+ x <- c(27,25,23)  # vector
+ 
+ n <- c('Tottenham','Aston Villa','Leicester')    # vector of names
+ 
+ names(x) <- n    # assigning names. pay attention to the function names(x)
+ 
+ Arrays: An array is a data structure that can hold data of different dimension.
+ 
+ vector1 =  c(5, 10, 15,20)
+ vector2 =  c(25, 30, 35, 40, 45, 50,55,60)
+ finaldata = array(c(vector1, vector2),dim =c(4,4,2)) > array(data,shape)
+ 
+ TIP : compare vectors in python and R. In R they have (n,1)
+ 
+ matrix(data = c(1,2,3,5,8,13), # the data elements (First Fibonacci numbers)
+        ncol = 3,              # number of columns
+        nrow = 2,              # number of rows
+        byrow = TRUE)          # fill matrix by rows
+		
+		
+# Generating a named matrix
+M <- matrix(data = c(1,2,3,5,8,13), # the data elements (First Fibonacci numbers)
+            ncol = 3,              # number of columns
+            nrow = 2,              # number of rows
+            byrow = TRUE)          # fill matrix by rows
+rn <- c('r1','r2')       # vector of rownames
+cn <- c('c1','c2','c3')  # vector of colnames
+rownames(M) <- rn        # assign rownames > function rownames
+colnames(M) <- cn        # assign colnames > function colnames
+
+List() > a versatile data structure that can store different types of values, including vectors, matrices, data frames, or even other lists.					
+								
+The most important data structure in R are DATAFRAMEs.
+
+v1 <- c(10,20,30)                                # numeric vector
+v2 <- c('a','b','c')                             # character vector
+v3 <- c(TRUE,TRUE,FALSE)                         # logical vector
+
+my_frame = data.frame(v1, v2, v3, stringsAsFactors =TRUE) # data.frame
+
+my_frame$v2 > access to the column in v2
+
+
+v1 <- c(10,20,30)                           # numeric vector
+v2 <- c('a','b','c')                        # character vector
+v3 <- c(TRUE,TRUE,FALSE)                    # logical vector
+data.frame('c1' = v1,                       # column named 'c1'
+           'c2' = v2,                       # column named 'c2'
+           'c3' = v3,                       # column named 'c3'
+           row.names = c('r1', 'r2', 'r3'), # vector of rownames
+           stringsAsFactors = FALSE)
+	
+m=list(c(1,2,3),c('b','c'))	
+	   
+[[1]]
+[1] 1 2 3
+
+[[2]]
+[1] "b" "c"
+
+m[1] > returns:
+[[1]]
+[1] 1 2 3
+
+m[[1]] > returns:
+[1] 1 2 3
+
+m[[1]][1]
+[1] 1
+
+
+s = c("aaa"="a", "bbb"="b", "ccc"="c", "ddd"="d", "eee"="e")
+aaa bbb ccc ddd eee 
+"a" "b" "c" "d" "e" 
+
+names(s):
+[1] "aaa" "bbb" "ccc" "ddd"
+[5] "eee"
+
+s[1]
+aaa 
+"a"
+s[-1] > will drop the first element
+
+
+# out-of-range index returns NA
+s[10]
+<NA>
+ NA
+ 
+i <- c(2,3,5,5)
+s[i] > we can use a vector to return call the column vectors
+bbb ccc eee eee 
+"b" "c" "e" "e" 
+
+i <- c('ddd','bbb')
+s[i]
+ddd bbb 
+"d" "b" 
+
+# select elements greater than 'b'
+i <- s > 'b'
+s[i]
+
+# For Matrix
+m=matrix(c(3,2,1,4,3,2,6,5,4),nrow=3,ncol=3)
+
+     [,1] [,2] [,3]
+[1,]    3    4    6
+[2,]    2    3    5
+[3,]    1    2    4
+
+M[2,3] > calling a matrix[row,column]
+5
+M[1,]> returns only row 1
+3,4,6
+
+
+print(M[c(1,3),c(2,1)])
+     [,1] [,2]
+[1,]    4    3
+[2,]    2    1
+
+finaldata[row, column,depth][element]
+
+
+x <- c(100, 200, 300, 400, 500)
+y <- c(0, 1, 2, 3, 4, 5, 6, 7)
+M <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+              11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+              22, 23, 24, 25), ncol = 5, nrow = 5, byrow = TRUE)
+
+# if functions:
+
+if(condition){
+	<do somthing>
+} else if(condition){
+	<do something>
+} else { 
+	<do something>
+	}
+
+x <- 5
+y <- 5
+if(x > y) {
+  print("x is greater")
+} else if(x < y) {
+  print("y is greater")
+} else {
+  print("x and y are equal")
+}
+
+
+x <- 7
+y <- 5
+z <- 2
+if(x > y) {
+  print("x is greater than y")
+  if(x > z) {
+    print("x is greater than y and z")
+    }
+}
+
+x <- 7
+y <- 5
+z <- 2
+
+if(x > y && x > z) {		> %% remainder && and condition
+  print("Yes, x is greatest number")
+}
+
+[1] "Yes, x is greatest number"
+
+
+
+x <- 7
+y <- 5
+z <- 9
+if(x > y || x > z) {		> || or condition
+  print("x is greater than y or z")
+}
+[1] "x is greater than y or z"
+
+my_data <- data.frame(c1 = c(10, 25, 15, 30, 20))
+indices <- which(my_data$c1 >= 20) > It returns the position(s) of the element(s) that meet the given condition.
+
+
+# Sequences of Letters:
+a <- LETTERS[1:10]
+# Second seq of ltters
+b <- LETTERS[7:12]
+# looks for each element of b in a if exists turns TRUE
+b %in% a
+
+
+library('dplyr') > is library tha contains case_when function
+					case_when function is a multicondtional function
+# general format:
+
+case_when(condition_1 ~ value_1,
+          condition_2 ~ value_2,
+          ...,
+          TRUE ~ default_value)
+		  
+		  #tip > the last TRUE default value returns a value if non of conditions about are meet
+
+				
+p <- 1:25 
+case_when(
+factorial(p-1) %% p == -1 ~ "prime number", 
+factorial(p-1) %% p == (p-1) ~ "Prime number",
+TRUE ~ as.character(p)
+)
+
+#generates 15 values from a standard normal, 15 values from
+#  uniform distribution (0,1), 15 values from a normal (1,2):
+
+x <- c(rnorm(15), runif(15), rnorm(15, 1,2))
+
+rnorm(15) > generates 15 values from a standard normal 
+
+runif(15) > 15 values from uniform distribution (0,1)
+
+rnorm(15, 1,2) > 15 values from a normal (1,2)
+
+
+
+# For loops
+
+general formation:
+for(condition if counter){   > i in 1:15 ~ for i in range(1,16) > in python 
+	<do something>
+}
+
+for(i in 1:5){
+  print(i)
+}
+
+myvector <- c(1,2,3,4,5) #A sequence of integer can be assigned also with:
+myvector <-1:5 
+
+for(i in myvector){
+  print(i)
+}
+
+myvector <- seq(1,10, by = 2)
+for(i in myvector){
+  print(i)
+}
+
+my_range <- range(1,10) > it only represent a pair of numeric values
+myvector <- seq(my_range[1],my_range[2], by = 2) > sqe(start,end,steps) > range in python 
+
+for(i in myvector){
+  print(i)
+}
+
+mymarks <- c(23,29,30,30,21,25,27,30,39,19)
+len_mymarks <- length(mymarks) > length of a object > len in python
+my_sum <- 0
+for(i in (1:len_mymarks)){
+  my_sum <- my_sum + mymarks[i]
+}
+print(paste("The sum is: ", my_sum))
+
+
+mean(mymarks)
+
+# While Loops
+
+z<-5
+maxcounter <- 4
+counter <- 0
+while(z>=3 && z<=10) {
+  #browser()
+  print(z)
+  counter = counter + 1
+  if (counter > maxcounter){
+    break
+  }
+  coin<-rbernoulli(n=1,p=0.5)
+  if(coin == 1) {
+    z<-z+1
+  } else {
+    z <- z-1
+  }
+} 
+
+val <- 5
+repeat {
+  print(val)
+  val <- val+1
+  if (val == 9){
+    break
+  }
+}
+
+x <- 1:4
+for (i in x) {
+  if (i == 2) {
+    next > skipping to the next loop
+  }
+  print(i)
+}
+
+
+
+R has some functions which implement looping in a compact form to make your life easier.
+
+lapply(): Loop over a list and evaluate a function on each element
+sapply(): Same as lapply but try to simplify the result
+apply(): Apply a function over the margins of an array
+tapply(): used to apply a function over a vector or subsets of a vector. It can be thought of as a combination of split() and sapply() for vectors only. Synthax: function (X, INDEX, FUN = NULL,…),
+mapply: is a multivariate apply of sorts which applies a function in parallel over a set of arguments.
+
+
+#Functions
+ general form of the functions :
+ 
+ name_func=function(inputs){
+ 
+ 		<do somethings>
+		
+		return
+ 
+ }
+ 
+norm <- function(x, p = 2){
+  d <- sum(x^p)^(1/p)
+  return(d)
+}
+print(norm(x = c(1,1))) #Compute the Euclidean norm of the vector c(1,1)
+
+
+# Lib ZOO
+library('zoo')
+It allow to create an object having attributes of a time series
+
+y <- data.frame('stock_price' = c(76,72.1,78.3, 71.1, 69.9, 68.8), 'volume' = c(9.8,1.2,3.5, 4.4, 3.2, 2.1))
+
+j <- as.Date(c('2021/01/02', '2021/01/03', '2021/01/04', '2021/01/05', '2021/01/06', '2021/01/07'), format = "%Y/%m/%d")
+
+TS <-  zoo(x = y, order.by = j)
+TS
+
+library('zoo')
+x <- data.frame('price' = c(100,99.3,100.2), 'volume' = c(9.9,1.3,3.6))
+
+i <- as.POSIXct(c('20210101 120631', '20210113 085145', '20210120 182309'), format = "%Y%m%d%H%M%S")
+
+my_zoo = zoo(x = x, order.by = i)
+
+my_zoo
+
+
+TS.sub <- window(TS, start = '2021-01-02', end = '2021-01-03') >
+
+This code creates a subset of a time series object TS using the window() function. 
+
+TS.sub
+diff(TS.sub) >
+
+This code calculates the difference between consecutive values in the TS.sub time series subset using the diff() function. It computes the lag-1 difference, meaning it subtracts the previous observation from the current one. 
+
+
+TS.sub1 <- window(TS, start = '2021-01-04', end = '2021-01-07')
+
+stats::lag(TS.sub1, k = -1) >
+The code stats::lag(TS.sub1, k = -1) is using the lag() function from the stats package in R to lag a time series object, TS.sub1, by a specified number of time steps.
+ 
+ TIP !!   stats::lag(): This specifies the lag() function from the stats package. The double colon operator :: is used to explicitly refer to the function from a specific package.
+
+
+na.locf(TS.merged, fromLast = TRUE) >  is using the na.locf() function in R to fill missing values (NA) in a time series object TS.merged using the "last observation carried forward" approach.
+
+
+# compute the rolling mean on a 2-observation window
+ 
+rollapply(TS, width = 2, FUN = mean
+
+
+require(zoo)
+years<-data_bikes[,1];
+Countries<-na.approx(data_bikes[,2])
+
+BBSs<-na.approx(data_bikes[,3])
+bikes<-na.approx(data_bikes[,4])
+zoo_Coun<-zoo(Countries,years)
+zoo_BBSs<-zoo(BBSs,years)
+zoo_bikes<-zoo(bikes,years)
+
+plot.zoo(cbind(zoo_Coun,zoo_BBSs, zoo_bikes), col=c('red','green', 'blue'), ylab=list('# of countries', '# of BBSs', '# of bikes (thous.)'), xlab='Years',main='Bike sharing world evolution', lwd=2)
+
+>cbind< creates a table of selected column.
+>c< indicates colours
+>lwd< is a parameter in the plot.zoo() function that stands for "line width."
+
+
+#knitr::opts_chunk$set(fig.width=4, fig.height=4, fig.asp = .42)
+> This is a comment specifying the figure dimensions and aspect ratio for plotting using the knitr package
+
+x <- rnorm(100)
+y <- 1/sqrt(2 * pi) * exp(- x^2 / 2)
+plot(x,y,main = "X vs Y", xlab="x",ylab=expression(y[1]),type="p",cex=1, pch = 19)
+
+> This creates a scatter plot where the x values are plotted against the y values, 
+with a title "X vs Y", x-axis label "x", y-axis label as the symbol y₁, 
+plotting type as points (type = "p"), 
+the size of the points (cex = 1), 
+and the shape of the points as solid circles (pch = 19).
+
+my_hist = hist(x, breaks = c(min_x, -0.5, -0.25, -0.1, 0.1, 0.25, 0.5, max_x),
+               col = "blue")
+			    
+
+x1<- rnorm(1000)
+hist(x1, breaks=c(-5,-4.5,-4,-3.5,-3,-2.5,-2,-1.5,-1,-0.5,0, 0.5,1,1.5,
+                  2,2.5,3,3.5, 4,4.5,5),
+     ylim=c(0,0.45), 
+	 freq = FALSE, 
+	 ylab="Density", 
+	 xlab="Values",
+     main = expression(paste("Histogram and theoretical density from ",
+                             1/sqrt(2 * pi) * exp(- x^2 / 2))))
+							 
+curve(dnorm(x,mean=0, sd=1), col="red", add=T, lwd=2)
+
+
+abline(lm.risult, col="red")
+> abline(): This is a function in R used to add straight lines to a plot.
+
+## GGPLOT 
+
+library(ggplot2)
+data(cars)
+mtcars$cylinder <- as.factor(mtcars$cyl) >> The as.factor() function is used to convert a variable into a factor, which is a categorical data type in R.
+
+qplot(cylinder, mpg, data=mtcars, geom=c("boxplot", "jitter"),fill=cylinder,
+      main="Box plots with superimposed data points",ylab="Miles per Gallon")
+>> the qplot() function is a simplified version of the ggplot() function that allows you to quickly create basic plots with less code and fewer options. It stands for "quick plot."
+>> so the general form is qplot(x, y, data, geom, ...)
+	    
+library(ggplot2)
+
+ DatiIncome<-read.csv("Voti2.csv", header=TRUE, sep=";")
+ attach(DatiIncome)
+ qplot(education, income, data=DatiIncome, facets=vote~age_group)
+ 
+ >> The attach() function in R is used to make the variables of a data frame accessible by their names without explicitly referencing the data frame.   
+
+ >> facets = vote ~ age_group indicates that the plot should be faceted (split into subplots) based on the combination of the vote and age_group variables.
+
+
+ sparrowdata<-read.csv('sparrows.csv', sep=',')
+ attach(sparrowdata)
+ 
+ plot(sparrowdata, pch=20, cex=2, ylab='Breeding pairs per hectare',
+	       xlab='Pedestrians per Ha per min')
+
+>> The plot() function is used to create a scatter plot. 
+
+ reg1<-lm(pairs~ped)
+ 
+>> lm() function is used to fit a linear regression model. 
+
+ abline(reg1, lwd=2)
+>> The abline() function is used to add the regression line to the plot.
+ 
+ library(ggplot2)
+ fit <- lm(pairs ~ ped + I(ped^2))
+ prd <- data.frame(ped = seq(from = range(ped)[1], to = range(ped)[2],
+                             length.out = 18))
+ err <- predict(fit, newdata = prd, se.fit = TRUE)
+ prd$lci <- err$fit - 1.96 * err$se.fit
+ prd$fit <- err$fit
+ prd$uci <- err$fit + 1.96 * err$se.fit
+ ggplot(prd, aes(x = ped, y = fit)) + theme_bw() + geom_line() +
+   geom_smooth(aes(ymin = lci, ymax = uci), stat = "identity") +
+   geom_point(data=sparrowdata, aes(x = ped, y = pairs))
+   
+>> These lines calculate the predicted values (err$fit) and the standard errors (err$se.fit) based on the fitted regression model (fit) using the new data (prd). 
+The lower confidence interval (lci), fitted values (fit), and upper confidence interval (uci) are calculated based on the predicted values and standard errors.
+
+>> ggplot() sets up the basic plot, specifying the prd data frame, and mapping the ped variable to the x-axis and fit to the y-axis. theme_bw() sets the plot theme to a black and white theme.
+
+>> geom_line() adds a line to the plot based on the fit values from prd. 
+>> geom_smooth() adds a smoothed line to the plot, using the lci and uci values to create confidence intervals. 
+>> geom_point() adds scatter points to the plot based on the ped and pairs variables from the sparrowdata data frame.
+
+library(shiny)
+library(bslib)
+library(dplyr)
+library(ggplot2)
+
+
+df <- readr::read_csv("penguins.csv")
+
+# Find subset of columns that are suitable for scatter plot
+df_num <- df |> select(where(is.numeric), -Year)
+>> |> specifies to select numeric values with the library magrittr
+
+ui <- page_fillable(theme = bs_theme(bootswatch = "minty"),
+  layout_sidebar(fillable = TRUE,
+    sidebar(
+      varSelectInput("xvar", "X variable", df_num, selected = "Bill Length (mm)"),
+      varSelectInput("yvar", "Y variable", df_num, selected = "Bill Depth (mm)"),
+      checkboxGroupInput("species", "Filter by species",
+        choices = unique(df$Species), selected = unique(df$Species)
+      ),
+      hr(), # Add a horizontal rule
+      checkboxInput("by_species", "Show species", TRUE),
+      checkboxInput("show_margins", "Show marginal plots", TRUE),
+      checkboxInput("smooth", "Add smoother"),
+    ),
+    plotOutput("scatter")
+  )
+)
+ >> The ui variable defines the user interface of the Shiny app. It uses the page_fillable() function to create a fillable page, and the bs_theme() function from the bootswatch package to apply a Bootstrap theme (in this case, "minty").
+
+Within the layout, a sidebar is created using the layout_sidebar() function. The sidebar contains various input components, such as varSelectInput() for selecting the x and y variables from the df_num data frame, checkboxGroupInput() for filtering the data by species, and several checkbox inputs for controlling additional features of the plot.
+
+The plotOutput("scatter") defines where the output plot will be rendered. 
+ 
+ 
+server <- function(input, output, session) {
+  subsetted <- reactive({
+    req(input$species)
+    df |> filter(Species %in% input$species)
+  })
+  
+  output$scatter <- renderPlot({
+    p <- ggplot(subsetted(), aes(!!input$xvar, !!input$yvar)) + list(
+      theme(legend.position = "bottom"),
+      if (input$by_species) aes(color=Species),
+      geom_point(),
+      if (input$smooth) geom_smooth()
+    )
+
+    if (input$show_margins) {
+      margin_type <- if (input$by_species) "density" else "histogram"
+      p <- p |> ggExtra::ggMarginal(type = margin_type, margins = "both",
+        size = 8, groupColour = input$by_species, groupFill = input$by_species)
+    }
+    
+    p
+  }, res = 100)
+}
+
+
+ >> The server function defines the server logic of the Shiny app. Inside the server function, a reactive expression called subsetted is created. It filters the original df data frame based on the selected species input.
+
+The output$scatter block uses the renderPlot() function to define the plot generation based on the user inputs. It uses ggplot() to create the scatter plot using the filtered data (subsetted()). The plot aesthetics are set based on the selected x and y variables, and additional layers are added conditionally based on the checkbox inputs.
+
+If the "show_margins" checkbox is selected, marginal plots are added using the ggMarginal() function from the ggExtra package.
+
+
+shinyApp(ui, server)
+
+>> The shinyApp() function combines the defined user interface (ui) and server logic (server) to create the Shiny app.
+
+When you run this code, it will create a Shiny app that allows users to select x and y variables, filter the data by species, and control
+
+>> IMPORTANT NOTE:
+>> A Shiny app consists of two main components: the UI (user interface) and the server. The UI defines the layout and appearance of the app, while the server handles the reactive logic and data processing.
+
+
+
+setClass(
+  "Person",
+  representation(
+    name = "character",
+    age = "numeric"
+  ),
+  prototype(
+    name = NA_character_,
+    age = NA_real_
+  )
+)
+
+
+
+
+>>     The class name "Person" is defined using setClass.
+    The representation function specifies the slots (attributes) of the class. In this case, the "Person" class has two slots: "name" of type "character" and "age" of type "numeric".
+    The prototype function defines the initial values for the slots. In this case, the "name" slot is set to NA_character_ (representing a missing character value) and the "age" slot is set to NA_real_ (representing a missing numeric value).
+
+With this code, you have defined a basic class called "Person" with two slots: "name" and "age", and provided default values for those slots. You can create instances of this class and manipulate their attributes using various object-oriented programming techniques in R.
+>> The code you provided is an example of creating a class using S4 object-oriented programming system in R
+
+
+IMPORTANT: if we want to see an instantiation of s3 calss we can conveer the code above to it
+
+Person <- function(name = character(), age = numeric()) {
+  obj <- list(name = name, age = age)
+  class(obj) <- "Person"
+  obj
+}
+
+
+>> here we can see it has been written in S3 class type which indicates that the class has not been explicitly defined.
+TIP: explicity and implicity of class definition is the main difference of the S3 and S4 
+
+>> A reference class, also known as an R5 class, is another object-oriented programming system available in R.Reference classes were introduced in R to address some limitations of S3 and S4 systems.
+to do so setRefClass() is used to define the reference class called "Person" instead of setClass.
+
+
+>> The rnorm function is used to generate random numbers from a normal distribution.
+>> The dnorm function is used to calculate the density (probability density function) of a given value in a normal distribution.
+>> The aes function is used to map variables to aesthetic attributes of a plot, such as x and y coordinates, colors, shapes, sizes, etc. It is commonly used to define how different variables should be represented in a plot. 
+
+
+
+
